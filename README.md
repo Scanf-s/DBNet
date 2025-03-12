@@ -78,6 +78,9 @@ Download Trained models [Baidu Drive](https://pan.baidu.com/s/1o-itIZ5P_FH7rwSdp
   totaltext_resnet50
 ```
 
+- Create models/ directory in the root of the project.
+- And Put downloaded models in the models/ directory.
+
 ## Datasets
 The root of the dataset directory can be ```DB/datasets/```.
 
@@ -102,7 +105,13 @@ The data root directory and the data list file can be defined in ```base_totalte
 ### Demo
 Run the model inference with a single image. Here is an example:
 
-```CUDA_VISIBLE_DEVICES=0 python demo.py experiments/seg_detector/totaltext_resnet18_deform_thre.yaml --image_path datasets/total_text/test_images/img10.jpg --resume path-to-model-directory/totaltext_resnet18 --polygon --box_thresh 0.7 --visualize```
+```shell
+CUDA_VISIBLE_DEVICES=0 \
+python demo.py experiments/seg_detector/totaltext_resnet18_deform_thre.yaml \
+--image_path datasets/total_text/test_images/img10.jpg \
+--resume path-to-model-directory/totaltext_resnet18 \
+--polygon --box_thresh 0.7 --visualize
+```
 
 The results can be find in `demo_results`.
 
