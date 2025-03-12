@@ -22,14 +22,17 @@ Part of the code is inherited from [MegReader](https://github.com/Megvii-CSG/Meg
 - [x] Release DBNet++ models
 
 
-
 ## Installation
 
 ### Requirements:
-- Python3
-- PyTorch == 1.2 
-- GCC >= 4.9 (This is important for PyTorch)
-- CUDA >= 9.0 (10.1 is recommended)
+- Python 3.8.20
+- pytorch 2.4.1
+- pytorch-cuda 11.8
+- gcc 11.4.0 (Ubuntu 11.4.0)
+- nvcc CUDA Tool version cuda_11.8.r11.8/compiler.31833905_0
+- cuda-toolkit 11.8
+- RTX 3060Ti
+- torchvision 0.20.0
 
 
 ```bash
