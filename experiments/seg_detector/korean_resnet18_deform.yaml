@@ -35,7 +35,7 @@ define:
             class: Checkpoint
             start_epoch: 0
             start_iter: 0
-            resume: null
+            resume: null # 여기에 파인튜닝 시 생성된 체크포인트 모델 경로 지정하면 된다.
         model_saver: 
             class: ModelSaver
             dir_path: model
