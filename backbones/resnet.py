@@ -265,9 +265,18 @@ def deformable_resnet18(pretrained=True, **kwargs):
                             deformable_groups=1,
                             fallback_on_stride=False),
                     stage_with_dcn=[False, True, True, True], **kwargs)
+    # if pretrained:
+    #     model.load_state_dict(
+    #         model_zoo.load_url(
+    #             model_urls['resnet18'],
+    #             map_location=lambda storage, loc: storage.cuda(0)
+    #         ),
+    #         strict=False
+    #     )
     if pretrained:
-        model.load_state_dict(model_zoo.load_url(
-            model_urls['resnet18'], map_location=lambda storage, loc: storage.cuda(0)), strict=False)
+        state_dict = model_zoo.load_url(model_urls['resnet18'], map_location='cpu')
+        model.load_state_dict(state_dict, strict=False)
+    model = model.to('cuda:0')
     return model
 
 
