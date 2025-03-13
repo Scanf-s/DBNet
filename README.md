@@ -170,7 +170,21 @@ Check the paths of data_dir and data_list in the base_*.yaml file. For better pe
 
 You can also try distributed training (**Note that the distributed mode is not fully tested. I am not sure whether it can achieves the same performance as non-distributed training.**)
 
-```CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 train.py path-to-yaml-file --num_gpus 4```
+### Training with Korean datasets
+
+- check my dataset directory structure:  
+  ![image](https://github.com/user-attachments/assets/e0ca10ff-da5c-44ac-acc4-17551c9e2e8e)
+
+- I downloaded Korean datasets from [AIHub](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=105)
+- I unpacked datasets into origin_images and origin_labels directories
+
+Then, I ran the following scripts:
+
+- split_dataset.py: Splits the original dataset into train/test sets with a 75%/25% ratio.
+- convert_bbox.py: Converts JSON files to TXT files compatible with DBNet (using the bbox attribute).
+- make_data_list_txt.py: Generates test_list.txt and train_list.txt files.
+
+```CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=4 train.py experiments/seg_detector/korean_resnet18_deform.yaml --num_gpus 1```
 
 ## Improvements
 Note that the current implementation is written by pure Python code except for the deformable convolution operator. Thus, the code can be further optimized by some optimization skills, such as [TensorRT](https://github.com/NVIDIA/TensorRT) for the model forward and efficient C++ code for the [post-processing function](https://github.com/MhLiao/DB/blob/d0d855df1c66b002297885a089a18d50a265fa30/structure/representers/seg_detector_representer.py#L26).
