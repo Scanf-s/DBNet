@@ -184,7 +184,7 @@ Then, I ran the following scripts:
 - convert_bbox.py: Converts JSON files to TXT files compatible with DBNet (using the bbox attribute).
 - make_data_list_txt.py: Generates test_list.txt and train_list.txt files.
 
-```CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=4 train.py experiments/seg_detector/korean_resnet18_deform.yaml --num_gpus 1```
+```CUDA_VISIBLE_DEVICES=0 python train.py experiments/seg_detector/korean_resnet18_deform.yaml --num_gpus 1```
 
 ## Improvements
 Note that the current implementation is written by pure Python code except for the deformable convolution operator. Thus, the code can be further optimized by some optimization skills, such as [TensorRT](https://github.com/NVIDIA/TensorRT) for the model forward and efficient C++ code for the [post-processing function](https://github.com/MhLiao/DB/blob/d0d855df1c66b002297885a089a18d50a265fa30/structure/representers/seg_detector_representer.py#L26).

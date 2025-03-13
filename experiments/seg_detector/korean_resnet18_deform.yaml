@@ -33,9 +33,9 @@ define:
             num_workers: 16
         checkpoint: 
             class: Checkpoint
-            start_epoch: 0
+            start_epoch: 0 # resume 시 epoch 체크포인트 파일 명에 맞게 수정
             start_iter: 0
-            resume: null # 여기에 파인튜닝 시 생성된 체크포인트 모델 경로 지정하면 된다.
+            resume: null # 여기에 파인튜닝 시 생성된 체크포인트 모델 경로 지정하면 된다. -> outputs/workspace/DBNet/SegDetectorModel-seg_detector/deformable_resnet18/L1BalanceCELoss/model/model_epoch_15_minibatch_18000
         model_saver: 
             class: ModelSaver
             dir_path: model
