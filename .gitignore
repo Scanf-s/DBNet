@@ -109,7 +109,10 @@ venv.bak/
 log.txt # From the naive evaluating of ICDAR15
 
 # specific directory
-datasets
+datasets/korean_text/origin*
+datasets/korean_text/test*
+datasets/korean_text/train*
+datasets/total_text
 evaluation
 experiments/backup
 lib
